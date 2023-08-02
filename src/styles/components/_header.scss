@@ -1,0 +1,76 @@
+.header__wrapper {
+  max-width: 111.3rem;
+  padding: 3.1rem 0 12rem 0;
+  padding-top: 3.1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__logo-link {
+  text-decoration: none;
+}
+
+.header__title {
+  color: $color-title-text;
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 4rem;
+  position: relative;
+  padding-left: 4.9rem;
+  &::before {
+    content: '';
+    background-image: url('../icons/logo.svg');
+    background-repeat: no-repeat;
+    background-size: 4rem 4rem;
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    left: 0;
+  }
+}
+
+// NAVIGATION
+
+.navigation {
+  display: flex;
+  list-style: none;
+  width: 36.7rem;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  margin-left: 2.4rem;
+}
+
+.navigation__item {
+  position: relative;
+  &._active {
+    &::after {
+      content: '';
+      position: absolute;
+      border-bottom: solid 1.5px $color-navigation-active-border;
+      width: 2.1rem;
+      bottom: -6%;
+      left: 43%;
+    }
+  }
+}
+
+.navigation__link {
+  color: $color-navigation-text;
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.header__signUp-btn {
+  background-color: $color-primary;
+  padding: 0.9rem 2.3rem;
+  border-radius: 2rem;
+  border: none;
+  color: $color-btn-text;
+  font-family: 'Poppins';
+  font-size: 1.6rem;
+  font-weight: 500;
+}

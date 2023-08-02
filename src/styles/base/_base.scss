@@ -16,7 +16,8 @@ html {
 
 body {
   font-size: 1.6rem;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  background-color: $color-body-background;
+  font-family: "Poppins", sans-serif;
   &._lock {
     overflow: hidden;
   }

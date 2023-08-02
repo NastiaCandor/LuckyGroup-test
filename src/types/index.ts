@@ -16,3 +16,5 @@ export const wrapperParams: ElementParams = {
   tag: 'div',
   classes: ['wrapper'],
 };
+
+export const NAVIGATION_LINKS = ['Mobile Top Up', 'About', 'Rate', 'Help'];

@@ -1,6 +1,6 @@
 .header__wrapper {
   max-width: 111.3rem;
-  padding: 3.1rem 0 12rem 0;
+  padding: 3.1rem 0 11.8rem 0;
   padding-top: 3.1rem;
   display: flex;
   justify-content: space-between;
@@ -62,15 +62,4 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-}
-
-.header__signUp-btn {
-  background-color: $color-primary;
-  padding: 0.9rem 2.3rem;
-  border-radius: 2rem;
-  border: none;
-  color: $color-btn-text;
-  font-family: 'Poppins';
-  font-size: 1.6rem;
-  font-weight: 500;
 }

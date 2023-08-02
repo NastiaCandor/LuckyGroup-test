@@ -1,6 +1,7 @@
 import { ElementParams, wrapperParams } from '../../../types';
 import ElementCreator from '../../utils/ElementCreator';
 import View from '../View';
+import GetStartedView from './getStarted/GetStartedView';
 
 const mainParams: ElementParams = {
   tag: 'main',
@@ -15,9 +16,11 @@ export default class MainView extends View {
 
   private makeMain(): void {
     const wrapper = new ElementCreator(wrapperParams).getElement();
-    wrapper.classList.add('header__wrapper');
+    wrapper.classList.add('main__wrapper');
 
-    wrapper.append();
+    const getStarted = new GetStartedView().getHtmlElement();
+
+    wrapper.append(getStarted);
     if (this.viewElementCreator) {
       this.viewElementCreator.addInnerElement(wrapper);
     }

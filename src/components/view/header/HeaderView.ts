@@ -26,7 +26,7 @@ const headerTitleParams: ElementParams = {
 
 const signUpBtnParams: ElementParams = {
   tag: 'button',
-  classes: ['header__signUp-btn'],
+  classes: ['header__signUp-btn', 'button_round'],
   textContent: 'Sign Up',
 };
 

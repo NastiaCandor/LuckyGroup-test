@@ -51,7 +51,7 @@ module.exports = ({develop}) => ({
     new HtmlWebpackPlugin({
       title: 'Global',
     }),
-    // new FaviconsWebpackPlugin('src/icons/fav_icon_flag.png'),
+    new FaviconsWebpackPlugin('src/icons/logo.svg'),
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),

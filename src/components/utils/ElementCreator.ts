@@ -2,12 +2,14 @@ import { ElementParams } from '../../types';
 
 export default class ElementCreator {
   private element: HTMLElement | null;
+
   constructor(param: ElementParams) {
     this.element = null;
     this.createElement(param);
   }
 
   public getElement(): HTMLElement {
+    // eslint-disable-next-line @typescript-eslint/keyword-spacing
     return <HTMLElement>this.element;
   }
 

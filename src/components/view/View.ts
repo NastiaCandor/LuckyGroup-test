@@ -3,6 +3,7 @@ import ElementCreator from '../utils/ElementCreator';
 
 export default class View {
   viewElementCreator: ElementCreator;
+
   constructor(params: ElementParams) {
     this.viewElementCreator = this.createView(params);
   }

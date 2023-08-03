@@ -5,8 +5,9 @@ import View from '../../View';
 import userImageSRC_1 from '../../../../icons/user_1.png';
 import userImageSRC_2 from '../../../../icons/user_2.png';
 import userImageSRC_3 from '../../../../icons/user_3.png';
-const usersSRC = [userImageSRC_1, userImageSRC_2, userImageSRC_3];
 import flagVisualSRC from '../../../../icons/main-image.png';
+
+const usersSRC = [userImageSRC_1, userImageSRC_2, userImageSRC_3];
 
 const getStartedParams: ElementParams = {
   tag: 'section',
@@ -15,6 +16,7 @@ const getStartedParams: ElementParams = {
 
 export default class GetStartedView extends View {
   loader: Loader;
+
   constructor() {
     super(getStartedParams);
     this.loader = new Loader();
@@ -23,7 +25,6 @@ export default class GetStartedView extends View {
 
   private makeGetStarted(): void {
     this.makeSearchPanel();
-    // this.makeVisualPanel();
   }
 
   private async makeSearchPanel(): Promise<void> {
@@ -146,14 +147,22 @@ export default class GetStartedView extends View {
     };
     const inputText = new ElementCreator(inputTextParams).getElement();
     inputText.setAttribute('type', 'text');
+    inputText.setAttribute('maxlength', '12');
+    inputText.setAttribute('minlength', '4');
+    inputText.setAttribute('required', '');
+    inputText.setAttribute('name', 'searchCountry');
     inputText.setAttribute('placeholder', 'Where do you want to call?');
+    inputText.addEventListener('keyup', () => {
+      this.checkInputSearch();
+    });
     const inputBtnParams: ElementParams = {
       tag: 'input',
       classes: ['search-panel__input-btn', 'button_round'],
     };
     const inputBtn = new ElementCreator(inputBtnParams).getElement();
     inputBtn.setAttribute('type', 'button');
-
+    this.formFunctionality(form);
+    this.formSearchFunctionality(inputBtn);
     form.append(inputText, inputBtn);
     return form;
   }
@@ -169,7 +178,7 @@ export default class GetStartedView extends View {
       classes: ['search-panel__users-icons'],
     };
     const usersIcons = new ElementCreator(usersIconsParams).getElement();
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i += 1) {
       const userIconParams: ElementParams = {
         tag: 'img',
         classes: ['search-panel__user-icon'],
@@ -204,5 +213,26 @@ export default class GetStartedView extends View {
 
     regularUsers.append(usersIcons, usersText);
     return regularUsers;
+  }
+
+  private formFunctionality(form: HTMLElement): void {
+    form.addEventListener('click', (event: Event) => {
+      event.preventDefault();
+    });
+  }
+
+  private formSearchFunctionality(btn: HTMLElement): void {
+    btn.addEventListener('click', (event: Event) => {
+      this.checkInputSearch();
+      event.preventDefault();
+    });
+  }
+
+  private checkInputSearch() {
+    const input = document.querySelector('.search-panel__input-text');
+    console.log((<HTMLInputElement>input).value);
+    const reg = /\)|!|@|#|\$|%|\(|\^|&|\*/gi;
+    const newValue = (<HTMLInputElement>input).value.replace(reg, '');
+    (<HTMLInputElement>input).value = newValue;
   }
 }

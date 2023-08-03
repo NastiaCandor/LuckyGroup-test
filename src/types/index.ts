@@ -1,3 +1,7 @@
+import indianFlagSRC from '../icons/indian_flag.png';
+import britishFlagSRC from '../icons/british_flag.png';
+import italianFlagSRC from '../icons/italian_flag.png';
+
 // INTERFACES
 
 export interface ViewParams {
@@ -18,3 +22,15 @@ export const wrapperParams: ElementParams = {
 };
 
 export const NAVIGATION_LINKS = ['Mobile Top Up', 'About', 'Rate', 'Help'];
+
+export const VISUAL_FLAGS = [
+  indianFlagSRC,
+  britishFlagSRC,
+  italianFlagSRC,
+  indianFlagSRC,
+  indianFlagSRC,
+  britishFlagSRC,
+  italianFlagSRC,
+];
+
+export const VISUAL_FLAG_DELAY = 3000;

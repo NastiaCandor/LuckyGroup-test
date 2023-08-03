@@ -1,4 +1,4 @@
-import { ElementParams } from '../../../../types';
+import { ElementParams, VISUAL_FLAGS, VISUAL_FLAG_DELAY } from '../../../../types';
 import ElementCreator from '../../../utils/ElementCreator';
 import Loader from '../../../utils/Loader';
 import View from '../../View';
@@ -70,15 +70,65 @@ export default class GetStartedView extends View {
       classes: ['flag-visual'],
     };
     const visualPanel = new ElementCreator(visualPanelParams).getElement();
+    const visualComponentsParams: ElementParams = {
+      tag: 'div',
+      classes: ['flag-visual__main-panel'],
+    };
+    const visualComponents = new ElementCreator(visualComponentsParams).getElement();
 
     const mainImageParams: ElementParams = {
       tag: 'img',
       classes: ['flag-visual__main-img'],
     };
     const mainImage = new ElementCreator(mainImageParams).getElement();
+    mainImage.setAttribute('alt', 'excited girl with a phone');
     (<HTMLImageElement>mainImage).src = flagVisualSRC;
+    const circleColoredParams: ElementParams = {
+      tag: 'div',
+      classes: ['flag-visual__colored-circle'],
+    };
+    const circleColored = new ElementCreator(circleColoredParams).getElement();
+    const circleBorderParams: ElementParams = {
+      tag: 'div',
+      classes: ['flag-visual__border-circle'],
+    };
+    const circleBorder = new ElementCreator(circleBorderParams).getElement();
 
-    visualPanel.append(mainImage);
+    const movingFlagsParams: ElementParams = {
+      tag: 'div',
+      classes: ['flag-visual__moving-flags'],
+    };
+    const movingFlags = new ElementCreator(movingFlagsParams).getElement();
+    VISUAL_FLAGS.forEach((flag, ind) => {
+      const flagItemParams: ElementParams = {
+        tag: 'div',
+        classes: ['flag-visual__flag'],
+      };
+      const flagItem = new ElementCreator(flagItemParams).getElement();
+      flagItem.style.setProperty('--i', `${ind}`);
+      const flagImgParams: ElementParams = {
+        tag: 'img',
+        classes: ['flag-visual__flag-img'],
+      };
+      const flagImg = new ElementCreator(flagImgParams).getElement();
+      (<HTMLImageElement>flagImg).src = flag;
+      flagImg.style.setProperty('--i', `${ind}`);
+      flagItem.append(flagImg);
+      movingFlags.append(flagItem);
+    });
+
+    setTimeout(() => {
+      movingFlags.classList.add('flags-out');
+    }, VISUAL_FLAG_DELAY);
+    setTimeout(
+      () => {
+        movingFlags.classList.add('flags-rotate');
+      },
+      VISUAL_FLAG_DELAY + 400 * VISUAL_FLAGS.length,
+    );
+
+    visualComponents.append(mainImage, circleColored, circleBorder, movingFlags);
+    visualPanel.append(visualComponents);
     if (this.viewElementCreator) {
       this.viewElementCreator.addInnerElement(visualPanel);
     }

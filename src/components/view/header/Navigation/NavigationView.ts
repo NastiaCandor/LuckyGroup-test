@@ -47,6 +47,37 @@ export default class NavigationView extends View {
 
     if (this.viewElementCreator) {
       this.viewElementCreator.addInnerElement(navigationNav);
+      this.hamburgerFunctionality(this.viewElementCreator.getElement());
     }
+  }
+
+  public iconHamburgerFunctionality(icon: Element): void {
+    icon.addEventListener('click', () => {
+      this.toogleActiveClass();
+    });
+  }
+
+  private hamburgerFunctionality(bg: HTMLElement): void {
+    bg.addEventListener('click', (event: Event) => {
+      if (event === null) return;
+      if (event.target === null) return;
+      const target = <HTMLElement>event.target;
+      if (target.closest('.header__navigation') == null || target.closest('.navigation')) {
+        this.toogleActiveClass();
+      }
+    });
+  }
+
+  private toogleActiveClass(): void {
+    const iconHamburger = document.querySelector('.hamburger');
+    if (iconHamburger === null) return;
+    const menuHeader = document.querySelector('.header__navigation');
+    if (menuHeader === null) return;
+    const bg = document.querySelector('.menu__bg');
+    if (bg === null) return;
+    menuHeader.classList.toggle('_active');
+    iconHamburger.classList.toggle('_active');
+    bg.classList.toggle('_active');
+    document.body.classList.toggle('_lock');
   }
 }

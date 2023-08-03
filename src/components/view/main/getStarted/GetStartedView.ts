@@ -230,7 +230,6 @@ export default class GetStartedView extends View {
 
   private checkInputSearch() {
     const input = document.querySelector('.search-panel__input-text');
-    console.log((<HTMLInputElement>input).value);
     const reg = /\)|!|@|#|\$|%|\(|\^|&|\*/gi;
     const newValue = (<HTMLInputElement>input).value.replace(reg, '');
     (<HTMLInputElement>input).value = newValue;

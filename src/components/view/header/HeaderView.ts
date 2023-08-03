@@ -47,11 +47,18 @@ export default class HeaderView extends View {
     headerLink.append(headerTitle);
     headerLogo.append(headerLink);
 
-    const navigation = new NavigationView().getHtmlElement();
-
+    const navigationView = new NavigationView();
     const signUpBtn = new ElementCreator(signUpBtnParams).getElement();
+    const hamburgerParams: ElementParams = {
+      tag: 'span',
+      classes: ['hamburger'],
+    };
+    const hamburger = new ElementCreator(hamburgerParams).getElement();
+    navigationView.iconHamburgerFunctionality(hamburger);
+    hamburger.innerHTML = '<span class="hamburger__line"></span>';
 
-    wrapper.append(headerLogo, navigation, signUpBtn);
+    const navigation = navigationView.getHtmlElement();
+    wrapper.append(headerLogo, navigation, signUpBtn, hamburger);
     if (this.viewElementCreator) {
       this.viewElementCreator.addInnerElement(wrapper);
     }

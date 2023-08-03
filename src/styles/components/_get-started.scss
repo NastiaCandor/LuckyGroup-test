@@ -4,10 +4,21 @@
 
 .get-started {
   display: flex;
+  transition: all 0.3s ease-in-out;
+  @include tablet-width-840 {
+    flex-direction: column;
+  }
 }
 
 .search-panel {
-  max-width: 60rem;
+  max-width: 54.3%;
+  transition: all 0.3s ease-in-out;
+  @include laptop-width-1080 {
+    max-width: 45%;
+  }
+  @include tablet-width-840 {
+    max-width: 100%;
+  }
 }
 
 .search-panel__title {
@@ -31,6 +42,10 @@
   font-weight: 500;
   line-height: 173.333%;
   margin-bottom: 3.2rem;
+  @include tablet-width-676 {
+    font-size: 2rem;
+    height: 7rem;
+  }
 }
 
 .search-panel__get-started-btn {
@@ -62,6 +77,11 @@
   &:focus-visible, &:active, &:focus, &:target {
     outline: 2px solid $color-primary !important;
   }
+  @include tablet-width-840 {
+    max-width: 100%;
+  }  @include tablet-width-676 {
+    font-size: 2rem;
+  }
 }
 
 .search-panel__input-btn {
@@ -72,7 +92,9 @@
   position: absolute;
   right: 0.75rem;
   top: 0.45rem;
-  cursor: pointer;
+  @include tablet-width-676 {
+    padding: 1.3rem 2.7rem;
+  }
 }
 
 .search-panel__regular-users {
@@ -101,11 +123,14 @@
 .search-panel__user-text {
   color: $color-get-started-subtitle;
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   padding: 0.8rem 0 0 1rem;
+  @include tablet-width-676 {
+    font-size: 1.8rem;
+  }
 }
 
 .search-panel__user-link {

@@ -1,0 +1,11 @@
+@mixin laptop-width-1080 {
+  @media (max-width: $laptop-width-1080) { @content; }
+}
+
+@mixin tablet-width-840 {
+  @media (max-width: $tablet-width-840) { @content; }
+}
+
+@mixin tablet-width-676 {
+  @media (max-width: $tablet-width-676) { @content; }
+}

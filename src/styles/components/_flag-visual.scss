@@ -1,10 +1,25 @@
 .flag-visual {
-  width: 100%;
+  width: 40.5%;
   display: flex;
+  justify-content: right;
+  transition: all 0.3s ease-in-out;
+  @include laptop-width-1080 {
+    scale: 0.9;
+    width: 50%;
+    transform: translateY(3rem);
+  }
+  @include tablet-width-840 {
+    width: 100%;
+    justify-content: center;
+  }
+  @include tablet-width-676 {
+    scale: 0.6;
+    height: 40rem;
+  }
 }
 
 .flag-visual__main-img {
-  padding: 1rem 0 0 16rem;
+  padding-top: 0.5rem;
   position: relative;
   z-index: 100;
 }
@@ -20,7 +35,7 @@
   border-radius: 50%;
   position: absolute;
   top: 8.3rem;
-  left: 16.2rem;
+  right: 0.5rem;
 }
 
 .flag-visual__border-circle {
@@ -31,7 +46,7 @@
   border-radius: 50%;
   position: absolute;
   top: -3rem;
-  left: 7rem;
+  right: -7rem;
 }
 
 // MOVING FLAGS
@@ -42,7 +57,7 @@
   justify-content: center;
   align-items: center;
   top: 21rem;
-  left: 3.5rem;
+  left: -12rem;
 }
 
 .flag-visual__flag-img {
